@@ -1,0 +1,151 @@
+/* Druck auf A4: Einzelbogen (mit Unterschriftszeilen) und Klassenübersicht. */
+@page {
+  size: A4 portrait;
+  margin: 15mm 15mm 18mm;
+}
+
+@media print {
+  :root {
+    --bg: #fff;
+  }
+  html,
+  body {
+    background: #fff !important;
+    font-size: 10.5pt;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print,
+  .skip-link,
+  .app-header,
+  .banners,
+  .tabbar,
+  .toast-region,
+  .modal-backdrop,
+  .font-note {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  th.print-only,
+  td.print-only {
+    display: table-cell !important;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+  .screen {
+    padding: 0;
+    gap: 4mm;
+  }
+  .card {
+    border: 1px solid #999;
+    border-radius: 2mm;
+    padding: 3mm 4mm;
+    break-inside: avoid;
+  }
+  .entries-card {
+    break-inside: auto;
+  }
+  h1 {
+    font-size: 18pt;
+  }
+  h2 {
+    font-size: 12pt;
+    margin-bottom: 2mm;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Formularfelder durch reine Werte ersetzen */
+  input,
+  select,
+  textarea {
+    display: none !important;
+  }
+  .print-value {
+    display: block;
+    font-weight: 400;
+    font-size: 10.5pt;
+    border-bottom: 1px solid #bbb;
+    padding: 1mm 0;
+    min-height: 6mm;
+  }
+  .print-value.pre {
+    white-space: pre-wrap;
+  }
+  label {
+    font-size: 9pt;
+  }
+  .hint {
+    color: #333;
+  }
+
+  .print-title {
+    font-size: 11pt;
+    margin: 0 0 1mm;
+    color: #333;
+  }
+  .print-head p {
+    margin: 0.5mm 0;
+  }
+
+  .big-ampel-top .dot {
+    width: 12mm;
+    height: 12mm;
+  }
+  .entries li {
+    padding: 1.5mm 0;
+    break-inside: avoid;
+  }
+  .entries li.outside {
+    opacity: 1;
+    color: #666;
+  }
+  th,
+  td {
+    padding: 1.5mm 2mm;
+  }
+  tr {
+    break-inside: avoid;
+  }
+
+  /* Entscheidung und Unterschriften immer zusammen auf einer Seite */
+  .print-keep {
+    display: grid;
+    gap: 4mm;
+    break-inside: avoid;
+  }
+  .signatures {
+    margin-top: 2mm;
+    break-inside: avoid;
+  }
+  .sig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8mm;
+    margin-top: 12mm;
+  }
+  .sig {
+    display: flex;
+    flex-direction: column;
+    gap: 1mm;
+    font-size: 9pt;
+  }
+  .sig-line {
+    border-bottom: 1px solid #000;
+    height: 10mm;
+  }
+  .print-note {
+    font-size: 9pt;
+    color: #333;
+    margin-top: 4mm;
+  }
+}
